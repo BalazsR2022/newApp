@@ -1,9 +1,12 @@
 import { Image, StyleSheet, Platform } from 'react-native';
-
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import { Button } from '@rneui/base';
+import { Stack } from 'expo-router';
+
+
 
 export default function HomeScreen() {
   return (
@@ -16,39 +19,61 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type="title">Welcome on the newApp !</ThemedText>
         <HelloWave />
       </ThemedView>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">My cat</ThemedText>
+       
+      </ThemedView>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">Your cat!</ThemedText>
+       
+      </ThemedView>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title">Her/his cat!</ThemedText>
+       
+      </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <ThemedText type="subtitle">Cats like fishes</ThemedText>
         <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+          Ipsam voluptates vel perferendis minus itaque! Iusto perspiciatis
+           necessitatibus illum recusandae inventore qui reiciendis. 
           Press{' '}
           <ThemedText type="defaultSemiBold">
             {Platform.select({ ios: 'cmd + d', android: 'cmd + m' })}
           </ThemedText>{' '}
           to open developer tools.
         </ThemedText>
+      
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+        <ThemedText type="subtitle">Cats like birds</ThemedText>
         <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
+         Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Mollitia labore soluta natus similique ratione, nisi impedit 
+          sit id dolorum! Est doloremque placeat alias assumenda aspernatur earum labore nam tenetur optio?
         </ThemedText>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
+        <ThemedText type="subtitle">Cats like sleeping</ThemedText>
         <ThemedText>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam eaque distinctio laudantium 
+          impedit tempore cumque cupiditate necessitatibus quasi. Saepe mollitia doloremque, quis asperiores 
+          reprehenderit deleniti dolore laboriosam architecto fugit veritatis.
           When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
+
+
+
+
+
     </ParallaxScrollView>
   );
 }
+
 
 const styles = StyleSheet.create({
   titleContainer: {
