@@ -11,47 +11,25 @@ export default function HomeScreen() {
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          source={require('@/assets/images/Cat.png')}
+          source={require('@/assets/images/userCat.png')}
           style={styles.catLogo}
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome! It's the CatApp !</ThemedText>
+        <ThemedText type="title">User Page !</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">Misty</ThemedText>
+        <ThemedText type="subtitle">My Name</ThemedText>
         
       </ThemedView>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">Molly</ThemedText>
+        <ThemedText type="subtitle">My Age</ThemedText>
        
       </ThemedView>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">Luna</ThemedText>
-       
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Cats like fishes</ThemedText>
-        <ThemedText>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        
-         </ThemedText>
-      
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Cats like birds</ThemedText>
-        <ThemedText>
-         Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-         
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Cats like sleeping</ThemedText>
-        <ThemedText>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-          When you're ready, run{' '}
-        </ThemedText>
+        <ThemedText type="subtitle">My Toy</ThemedText>
+
       </ThemedView>
    </ParallaxScrollView>
   
