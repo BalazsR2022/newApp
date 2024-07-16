@@ -11,24 +11,16 @@ export default function HomeScreen() {
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
       headerImage={
         <Image
-          source={require('@/assets/images/catUser.png')}
+          source={require('@/assets/images/catCalculate.png')}
           style={styles.catLogo}
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">User Page !</ThemedText>
+        <ThemedText type="title">You can calculate</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">My Name</ThemedText>
-        
-      </ThemedView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">My Age</ThemedText>
-       
-      </ThemedView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">My Toy</ThemedText>
+        <ThemedText type="subtitle">Let's play!</ThemedText>
 
       </ThemedView>
    </ParallaxScrollView>

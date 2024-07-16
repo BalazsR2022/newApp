@@ -16,19 +16,24 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Cat's meal</ThemedText>
+        <ThemedText type="title">Ordering</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">My Name</ThemedText>
+        <ThemedText type="subtitle">Milk/food</ThemedText>
         
       </ThemedView>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">My Age</ThemedText>
+        <ThemedText type="subtitle">My Adress</ThemedText>
        
       </ThemedView>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">My Toy</ThemedText>
+        <ThemedText type="subtitle">Quantity</ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="subtitle">Go!</ThemedText>
+
+
 
       </ThemedView>
    </ParallaxScrollView>

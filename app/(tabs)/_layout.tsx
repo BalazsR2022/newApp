@@ -4,6 +4,9 @@ import React from 'react';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -15,7 +18,7 @@ export default function TabLayout() {
         headerShown: false,
       }}>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
@@ -24,11 +27,29 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="calculator"
         options={{
-          title: 'Explore',
+          title: 'Calculator',
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
+            <Entypo name="calculator" size={24} color="grey" />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="meal"
+        options={{
+          title: 'Meal',
+          tabBarIcon: ({ color, focused }) => (
+            <MaterialIcons name="set-meal" size={24} color="grey" />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="toys"
+        options={{
+          title: 'Toy',
+          tabBarIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons name="toy-brick-outline" size={24} color="grey" />
           ),
         }}
       />
