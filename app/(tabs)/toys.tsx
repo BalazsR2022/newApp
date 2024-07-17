@@ -1,9 +1,27 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import React, { useState } from 'react';
+import { Image, StyleSheet, Pressable, View, Text, ImageSourcePropType } from 'react-native';
 import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { Pressable } from 'react-native';
+
+interface ImageWithCaptionProps {
+  source: ImageSourcePropType;
+  caption: string;
+}
+
+const ImageWithCaption: React.FC<ImageWithCaptionProps> = ({ source, caption }) => {
+  const [selected, setSelected] = useState(false);
+
+  return (
+    <View style={styles.imageContainer}>
+      <Pressable onPress={() => setSelected(true)}>
+        <Image source={source} style={styles.image} />
+      </Pressable>
+      {selected && <Text style={styles.caption}>{caption}</Text>}
+    </View>
+  );
+};
 
 export default function HomeScreen() {
   return (
@@ -16,18 +34,21 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">You can win toys</ThemedText>
+        <ThemedText type="title">Toys</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="subtitle">Let's play!</ThemedText>
-
       </ThemedView>
-   </ParallaxScrollView>
-  
+      <ThemedView style={styles.imageList}>
+        <ImageWithCaption source={require('@/assets/images/Toys1.png')} caption="Ezt választottad" />
+        <ImageWithCaption source={require('@/assets/images/Toys2.png')} caption="Ezt választottad" />
+        <ImageWithCaption source={require('@/assets/images/Toys3.png')} caption="Ezt választottad" />
+        <ImageWithCaption source={require('@/assets/images/Toys4.png')} caption="Ezt választottad" />
+      </ThemedView>
+    </ParallaxScrollView>
   );
 }
-
 
 const styles = StyleSheet.create({
   titleContainer: {
@@ -45,5 +66,27 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'static',
+  },
+  imageContainer: {
+    marginVertical: 10,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+  },
+  image: {
+    width: 200,
+    height: 200,
+    borderRadius: 10,
+  },
+  caption: {
+    marginTop: 8,
+    fontSize: 16,
+    color: 'black',
+  },
+  imageList: {
+    padding: 20,
   },
 });

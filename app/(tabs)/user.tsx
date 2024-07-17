@@ -2,11 +2,20 @@ import React, { useState } from 'react';
 import { Image, StyleSheet, View, TextInput, ScrollView, Text, Pressable } from 'react-native';
 
 export default function HomeScreen() {
-  const [catAge, setCatAge] = useState<string>('');
+  const [catEmail, setCatEmail] = useState<string>('');
   const [catName, setCatName] = useState<string>('');
+  const [message, setMessage] = useState<string>('');
 
   function setName(text: string): void {
     setCatName(text);
+  }
+
+  function handleLogin() {
+    setMessage('Sikeres belépés');
+  }
+
+  function handleRegistration() {
+    setMessage('Sikeres regisztráció');
   }
 
   return (
@@ -27,17 +36,28 @@ export default function HomeScreen() {
           />
           <TextInput
             style={styles.input}
-            placeholder="Enter cat age"
-            keyboardType="numeric"
-            value={catAge}
-            onChangeText={setCatAge}
+            placeholder="Enter your email"
+            value={catEmail}
+            onChangeText={setCatEmail}
           />
-          <Pressable style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}>
-            <Text style={styles.buttonText}>Login</Text>
-          </Pressable>
-          <Pressable style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}>
-            <Text style={styles.buttonText}>Registration</Text>
-          </Pressable>
+          {message ? (
+            <Text style={styles.messageText}>{message}</Text>
+          ) : (
+            <>
+              <Pressable 
+                style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
+                onPress={handleLogin}
+              >
+                <Text style={styles.buttonText}>Login</Text>
+              </Pressable>
+              <Pressable 
+                style={({ pressed }) => [styles.button, pressed && styles.buttonPressed]}
+                onPress={handleRegistration}
+              >
+                <Text style={styles.buttonText}>Registration</Text>
+              </Pressable>
+            </>
+          )}
         </View>
       </ScrollView>
     </View>
@@ -71,7 +91,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   inputContainer: {
-   
     width: 290,
     borderRadius: 8,
     padding: 16,
@@ -79,7 +98,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FAEBD7',
   },
-  
   input: {
     height: 40,
     borderRadius: 8,
@@ -88,6 +106,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     paddingHorizontal: 8,
     width: '80%',
+    textAlign: 'center',
   },
   button: {
     backgroundColor: '#5F9EA0',
@@ -100,7 +119,7 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 5,
     width: '80%',
-    marginBottom: 12, // Közöttük legyen egy kis hely
+    marginBottom: 12,
   },
   buttonPressed: {
     backgroundColor: '#0056b3',
@@ -108,5 +127,10 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 16,
+  },
+  messageText: {
+    marginTop: 16,
+    fontSize: 16,
+    color: 'green',
   },
 });
