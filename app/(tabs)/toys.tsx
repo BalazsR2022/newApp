@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Image, StyleSheet, Pressable, View, Text, ImageSourcePropType } from 'react-native';
+import { Image, StyleSheet, Pressable, View, Text, ScrollView, ImageSourcePropType } from 'react-native';
 import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 
@@ -25,56 +24,82 @@ const ImageWithCaption: React.FC<ImageWithCaptionProps> = ({ source, caption }) 
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/catToy.png')}
-          style={styles.catLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Toys</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">Let's play!</ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.imageList}>
-        <ImageWithCaption source={require('@/assets/images/Toys1.png')} caption="Ezt választottad" />
-        <ImageWithCaption source={require('@/assets/images/Toys2.png')} caption="Ezt választottad" />
-        <ImageWithCaption source={require('@/assets/images/Toys3.png')} caption="Ezt választottad" />
-        <ImageWithCaption source={require('@/assets/images/Toys4.png')} caption="Ezt választottad" />
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.header}>
+          <Image
+            source={require('@/assets/images/catToy.png')}
+            style={styles.catLogo}
+          />
+          <ThemedView style={styles.titleContainer}>
+            <ThemedText type="title">Toys</ThemedText>
+            <HelloWave />
+          </ThemedView>
+          <ThemedView style={styles.titleContainer}>
+            <ThemedText type="subtitle">Let's play!</ThemedText>
+          </ThemedView>
+        </View>
+        <View style={styles.imageList}>
+          <View style={styles.stepContainer}>
+            <ImageWithCaption source={require('@/assets/images/Toys1.png')} caption="Ezt választottad, most sajnos nem nyertél, holnap megpróbálhatod újra!" />
+          </View>
+          <View style={styles.stepContainer}>
+            <ImageWithCaption source={require('@/assets/images/Toys2.png')} caption="Ezt választottad, most sajnos nem nyertél, holnap megpróbálhatod újra!" />
+          </View>
+          <View style={styles.stepContainer}>
+            <ImageWithCaption source={require('@/assets/images/Toys3.png')} caption="Gratulálunk, nyertél! Nyereményed átvételéről emailen értesítünk!" />
+          </View>
+          <View style={styles.stepContainer}>
+            <ImageWithCaption source={require('@/assets/images/Toys4.png')} caption="Ezt választottad, most sajnos nem nyertél, holnap megpróbálhatod újra!" />
+          </View>
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#5F9EA0', // Háttérszín beállítása az egész képernyőre
+  },
+  scrollView: {
+    flex: 1,
+    backgroundColor: '#5F9EA0', // Háttérszín beállítása az egész képernyőre
+  },
+  header: {
+    alignItems: 'center',
+    paddingTop: 20,
+  },
   titleContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'center',
+    marginVertical: 10,
+    backgroundColor: '#5F9EA0',
   },
   stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+    alignItems: 'center',
+    marginBottom: 20,
+    backgroundColor: '#5F9EA0',
   },
   catLogo: {
     height: 178,
     width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'static',
+    position: 'relative',
+    borderRadius: 10,
   },
   imageContainer: {
-    marginVertical: 10,
     alignItems: 'center',
+    paddingTop: 10, // Padding a kép fölött
+    paddingHorizontal: 10, // Padding a bal és jobb oldalon
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 5,
+    backgroundColor: '#FAEBD7',
+    borderRadius: 10,
   },
   image: {
     width: 200,
@@ -82,9 +107,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   caption: {
-    marginTop: 8,
+    marginVertical: 8, // Margó a felirat körül
     fontSize: 16,
-    color: 'black',
+    color: '#096397',
+    textAlign: 'center',
   },
   imageList: {
     padding: 20,
