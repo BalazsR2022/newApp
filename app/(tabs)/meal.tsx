@@ -1,62 +1,102 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { Image, StyleSheet, View, ImageSourcePropType } from 'react-native';
 import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+import React, { useState } from 'react';
 import { Pressable } from 'react-native';
+
+interface ImageWithCaptionProps {
+  source: ImageSourcePropType;
+  caption: string;
+}
+
+const ImageWithCaption: React.FC<ImageWithCaptionProps> = ({ source, caption }) => {
+  const [showCaption, setShowCaption] = useState(false);
+
+  const handlePress = () => {
+    setShowCaption(!showCaption);
+  };
+
+  return (
+    <View style={styles.imageContainer}>
+      <Pressable onPress={handlePress}>
+        <Image source={source} style={styles.image} />
+      </Pressable>
+      {showCaption && <ThemedText style={styles.caption}>{caption}</ThemedText>}
+    </View>
+  );
+};
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <View style={styles.container}>
+      <View style={styles.headerContainer}>
         <Image
           source={require('@/assets/images/catMeal.png')}
           style={styles.catLogo}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Ordering</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">Milk/food</ThemedText>
-        
-      </ThemedView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">My Adress</ThemedText>
-       
-      </ThemedView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">Quantity</ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">Go!</ThemedText>
-
-
-
-      </ThemedView>
-   </ParallaxScrollView>
-  
+      </View>
+      <View style={styles.imageList}>
+        <View style={styles.stepContainer}>
+          <ImageWithCaption source={require('@/assets/images/catMilk.png')} caption="Sikeres vásárlás" />
+        </View>
+        <View style={styles.stepContainer}>
+          <ImageWithCaption source={require('@/assets/images/catFood.png')} caption="Sikeres vásárlás!"/>
+        </View>
+      </View>
+    </View>
   );
 }
 
-
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'center',
+    backgroundColor: '#5F9EA0', // Background color for the entire screen
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  headerContainer: {
+    marginTop: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+    backgroundColor: '#FFF',
+    borderRadius: 8,
   },
   catLogo: {
     height: 178,
     width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'static',
+    borderRadius: 8,
+  },
+  stepContainer: {
+    marginBottom: 5,
+  },
+  imageContainer: {
+    alignItems: 'center',
+    padding: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+    backgroundColor: '#FAEBD7',
+    borderRadius: 10,
+    width: 200, // Ensure the container has a fixed width
+  },
+  image: {
+    width: 180,
+    height: 178,
+    borderRadius: 10,
+  },
+  caption: {
+    marginVertical: 4, // Reduce the vertical margin for the caption
+    fontSize: 14, // Adjust the font size if needed
+    color: '#096397',
+    textAlign: 'center',
+  },
+  imageList: {
+    padding: 10,
+    width: '100%',
+    alignItems: 'center',
   },
 });
