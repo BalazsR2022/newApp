@@ -1,9 +1,7 @@
-import { Image, StyleSheet, TextInput, Text, Platform, View, Button } from 'react-native';
-import { HelloWave } from '@/components/HelloWave';
+import { Image, StyleSheet, TextInput, Text, View, Pressable } from 'react-native';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { Pressable } from 'react-native';
 import React, { useState } from 'react';
 
 export default function HomeScreen() {
@@ -13,67 +11,66 @@ export default function HomeScreen() {
   const calculateHumanAge = () => {
     const age = parseFloat(catAge);
     if (!isNaN(age)) {
-      setHumanAge(age * 4.8); // 20 macskaév egyenlő 96 emberévvel, tehát szorzó 4.8
+      setHumanAge(age * 4.8);
     } else {
       setHumanAge(null);
     }
   };
 
-
-
-
-
-
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
+    <View style={styles.container}>
+      <ParallaxScrollView
+        headerImage={<Image
           source={require('@/assets/images/catCalculate.png')}
-          style={styles.catLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">You can calculate</ThemedText>
-        <HelloWave />
-      </ThemedView>
+          style={styles.catLogo} />} headerBackgroundColor={{
+            dark: '',
+            light: ''
+          }}>
+        <ThemedView style={styles.titleContainer}>
+          <ThemedText type="title">Calculate</ThemedText>
+        </ThemedView>
 
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Enter cat age"
-          keyboardType="numeric"
-          value={catAge}
-          onChangeText={setCatAge}
-        />
-         <Pressable
-          style={({ pressed }) => [
-            styles.button,
-            pressed ? styles.buttonPressed : null
-          ]}
-          onPress={calculateHumanAge}
-        >
-          <Text style={styles.buttonText}>Calculate</Text>
-        </Pressable>
-        {humanAge !== null && (
-          <Text style={styles.result}>Human Age: {humanAge.toFixed(2)}</Text>
-        )}
-      </View>
-    </ParallaxScrollView>
-  
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter cat age"
+            keyboardType="numeric"
+            value={catAge}
+            onChangeText={setCatAge}
+          />
+          <Pressable
+            style={({ pressed }) => [
+              styles.button,
+              pressed ? styles.buttonPressed : null
+            ]}
+            onPress={calculateHumanAge}
+          >
+            <Text style={styles.buttonText}>Calculate</Text>
+          </Pressable>
+          {humanAge !== null && (
+            <Text style={styles.result}>Human Age: {humanAge.toFixed(2)}</Text>
+          )}
+        </View>
+      </ParallaxScrollView>
+    </View>
   );
 }
 
-
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#5F9EA0', // Háttérszín beállítása a container stílusban
+  },
   titleContainer: {
     flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
     gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+    textAlign: 'center',
+    marginVertical: 16,
+    padding: 5,
+    backgroundColor: '#FAEBD7', // Cím konténer háttérszíne
+    borderRadius: 5,
   },
   catLogo: {
     height: 178,
@@ -85,6 +82,8 @@ const styles = StyleSheet.create({
   inputContainer: {
     padding: 16,
     alignItems: 'center',
+    backgroundColor: '#FAEBD7', // Input konténer háttérszíne
+    borderRadius: 10,
   },
   input: {
     height: 40,
@@ -95,7 +94,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   button: {
-    backgroundColor: '#007BFF',
+    backgroundColor: '#5F9EA0',
     borderRadius: 5,
     padding: 10,
     alignItems: 'center',
@@ -104,6 +103,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 5,
+    width: '80%',
+    marginBottom: 12,
   },
   buttonPressed: {
     backgroundColor: '#0056b3',
