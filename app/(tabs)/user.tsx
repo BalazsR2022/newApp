@@ -131,6 +131,6 @@ const styles = StyleSheet.create({
   messageText: {
     marginTop: 16,
     fontSize: 16,
-    color: 'green',
+    color: '#5F9EA0',
   },
 });
