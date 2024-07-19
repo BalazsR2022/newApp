@@ -29,18 +29,18 @@ export default function TabLayout() {
       <Tabs.Screen
         name="calculator"
         options={{
-          title: 'Calculator',
+          title: 'calculator',
           tabBarIcon: ({ color, focused }) => (
-            <Entypo name="calculator" size={24} color="grey" />
+            <MaterialCommunityIcons name={focused ? 'calculator-variant': 'calculator-variant-outline'} size={24} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="meal"
         options={{
-          title: 'Meal',
+          title: 'meal',
           tabBarIcon: ({ color, focused }) => (
-            <MaterialIcons name="set-meal" size={24} color="grey" />
+            <MaterialCommunityIcons name={focused ? 'food-outline' : 'food-outline'} size={24} color={color} />
           ),
         }}
       />
@@ -49,7 +49,7 @@ export default function TabLayout() {
         options={{
           title: 'Toy',
           tabBarIcon: ({ color, focused }) => (
-            <MaterialCommunityIcons name="toy-brick-outline" size={24} color="grey" />
+            <MaterialCommunityIcons name={focused ? 'toy-brick-outline' : 'toy-brick-outline'} size={24} color={color} />
           ),
         }}
       />
