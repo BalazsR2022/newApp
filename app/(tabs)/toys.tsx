@@ -28,15 +28,11 @@ export default function HomeScreen() {
       <ScrollView style={styles.scrollView}>
         <View style={styles.header}>
           <Image
-            source={require('@/assets/images/catToy.png')}
+            source={require('@/assets/images/catPlay.png')}
             style={styles.catLogo}
           />
           <ThemedView style={styles.titleContainer}>
-            <ThemedText type="title">Toys</ThemedText>
-            <HelloWave />
-          </ThemedView>
-          <ThemedView style={styles.titleContainer}>
-            <ThemedText type="subtitle">Let's play!</ThemedText>
+            <ThemedText type="title">Játssz és nyerj!</ThemedText>
           </ThemedView>
         </View>
         <View style={styles.imageList}>

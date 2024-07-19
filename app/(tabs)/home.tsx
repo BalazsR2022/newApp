@@ -1,79 +1,77 @@
-import { Image, StyleSheet, Platform } from 'react-native';
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { Pressable } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';  
+import { ThemedText } from '@/components/ThemedText';  
+import { ThemedView } from '@/components/ThemedView';  
+import React from 'react';  
 
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/catHome.png')}
-          style={styles.catLogo}
+export default function HomeScreen() {  
+  return (  
+    <View style={styles.container}>  
+      <View style={styles.headerContainer}>
+        <Image  
+          source={require('@/assets/images/catHome.png')}  
+          style={styles.catLogo} 
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome! It's the CatApp !</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">Misty</ThemedText>
-        
-      </ThemedView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">Molly</ThemedText>
-       
-      </ThemedView>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="subtitle">Luna</ThemedText>
-       
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Cats like fishes</ThemedText>
-        <ThemedText>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-        
-         </ThemedText>
-      
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Cats like birds</ThemedText>
-        <ThemedText>
-         Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-         
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Cats like sleeping</ThemedText>
-        <ThemedText>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-          When you're ready, run{' '}
-        </ThemedText>
-      </ThemedView>
-   </ParallaxScrollView>
-  
-  );
-}
+      </View>
+      <ThemedView style={styles.titleContainer}>  
+        <ThemedText type="title" style={styles.titleText}>CatApp</ThemedText>  
+      </ThemedView>  
+      <ThemedView style={styles.textContainer}>  
+        <ThemedText style={styles.centeredText}>Csodálatos kaland vár rátok együtt!</ThemedText>
+        <ThemedText style={styles.centeredText}>Számolj, nyerj, rendelj valami finomat kedvencednek!</ThemedText>
+        <ThemedText style={styles.centeredText}>Regisztrálj, hogy ne maradjatok le semmiről!</ThemedText>
+        <ThemedText style={styles.centeredText}>Vágjatok bele bátran!</ThemedText>  
+      </ThemedView>  
+    </View>  
+  );  
+}  
 
-
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+const styles = StyleSheet.create({  
+  container: {  
+    flex: 1,  
+    backgroundColor: '#FAEBD7',  
     alignItems: 'center',
-    gap: 8,
+    paddingTop: 20,
+    paddingHorizontal: 20,
+  },  
+  textContainer: {  
+    flex: 1,  
+    backgroundColor: '#5F9EA0',  
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 25,
+    borderRadius: 8,
+  },  
+  titleContainer: {  
+    flexDirection: 'row',  
+    justifyContent: 'center',  
+    alignItems: 'center',  
+    marginVertical: 16,  
+    paddingTop: 20,  
+    backgroundColor: '#5F9EA0',   
+    borderRadius: 5,  
+    padding:8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  catLogo: {
+  titleText: {
+    fontSize: 40,
+  },   
+  catLogo: {  
     height: 178,
     width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'static',
+    borderRadius: 8,
+  },  
+  headerContainer: {
+    marginTop: 5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+    backgroundColor: '#FAEBD7',
+    borderRadius: 8,
+  },
+  centeredText: {
+    textAlign: 'center',
+    fontSize: 25,
+    margin: 5,
   },
 });

@@ -30,13 +30,13 @@ export default function HomeScreen() {
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            placeholder="Enter your name"
+            placeholder="Gazdi neve"
             value={catName}
             onChangeText={setName}
           />
           <TextInput
             style={styles.input}
-            placeholder="Enter your email"
+            placeholder="Gazdi email címe"
             value={catEmail}
             onChangeText={setCatEmail}
           />

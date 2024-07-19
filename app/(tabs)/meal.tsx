@@ -34,7 +34,9 @@ export default function HomeScreen() {
           style={styles.catLogo}
         />
       </View>
+      <ThemedText style={styles.caption}>Rendelj valamit a cicádnak!</ThemedText>
       <View style={styles.imageList}>
+     
         <View style={styles.stepContainer}>
           <ImageWithCaption source={require('@/assets/images/catMilk.png')} caption="Sikeres vásárlás" />
         </View>
@@ -84,14 +86,14 @@ const styles = StyleSheet.create({
     width: 200, // Ensure the container has a fixed width
   },
   image: {
-    width: 180,
-    height: 178,
+    width: 160,
+    height: 160,
     borderRadius: 10,
   },
   caption: {
     marginVertical: 4, // Reduce the vertical margin for the caption
     fontSize: 14, // Adjust the font size if needed
-    color: '#096397',
+    color: '#000',
     textAlign: 'center',
   },
   imageList: {

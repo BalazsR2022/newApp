@@ -27,15 +27,6 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="calculator"
-        options={{
-          title: 'calculator',
-          tabBarIcon: ({ color, focused }) => (
-            <MaterialCommunityIcons name={focused ? 'calculator-variant': 'calculator-variant-outline'} size={24} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="meal"
         options={{
           title: 'meal',
@@ -44,6 +35,16 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="calculator"
+        options={{
+          title: 'calculator',
+          tabBarIcon: ({ color, focused }) => (
+            <MaterialCommunityIcons name={focused ? 'calculator-variant': 'calculator-variant-outline'} size={24} color={color} />
+          ),
+        }}
+      />
+    
       <Tabs.Screen
         name="toys"
         options={{

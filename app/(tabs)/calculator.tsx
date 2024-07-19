@@ -17,22 +17,22 @@ export default function HomeScreen() {
     }  
   };  
 
+ 
   return (  
     <View style={styles.container}>  
        <View style={styles.headerContainer}>
-        headerImage={<Image  
+        <Image  
           source={require('@/assets/images/catCalculate.png')}  
-          style={styles.catLogo} />}   
-        headerBackgroundColor: '#5F9EA0' ,
+          style={styles.catLogo} />
         </View>
         <ThemedView style={styles.titleContainer}>  
-          <ThemedText type="title">Calculate</ThemedText>  
+          <ThemedText type="title">Kalkulátor</ThemedText>  
         </ThemedView>  
 
         <View style={styles.inputContainer}>  
           <TextInput  
             style={styles.input}  
-            placeholder="Enter cat age"  
+            placeholder="Macska életkora"  
             keyboardType="numeric"  
             value={catAge}  
             onChangeText={setCatAge}  
@@ -44,10 +44,10 @@ export default function HomeScreen() {
             ]}  
             onPress={calculateHumanAge}  
           >  
-            <Text style={styles.buttonText}>Calculate</Text>  
+            <Text style={styles.buttonText}>Számolj</Text>  
           </Pressable>  
           {humanAge !== null && (  
-            <Text style={styles.result}>Human Age: {humanAge.toFixed(2)}</Text>  
+            <Text style={styles.result}>Emberi életkora: {humanAge.toFixed(2)}</Text>  
           )}  
         </View>  
      
@@ -60,6 +60,8 @@ export default function HomeScreen() {
     container: {  
       flex: 1,  
       backgroundColor: '#FAEBD7',  
+      alignItems: 'center',
+      padding: 15,
     },  
     parallaxContainer: {  
       flex: 1,  // Ensuring the ParallaxScrollView fills the container  
@@ -89,9 +91,7 @@ export default function HomeScreen() {
   catLogo: {  
     height: 178,
     width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'static', 
+    borderRadius: 8,
   },  
   input: {  
     height: 40,  
@@ -99,7 +99,9 @@ export default function HomeScreen() {
     borderWidth: 1,  
     marginBottom: 12,  
     paddingHorizontal: 8,  
-    width: '80%',  
+    width: '80%',
+    borderRadius: 8,
+    textShadowColor: 'grey'  
   },  
   button: {  
     backgroundColor: '#5F9EA0',  
@@ -133,7 +135,7 @@ export default function HomeScreen() {
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 5,
-    backgroundColor: '#FAEBD7',
+    backgroundColor: '#5F9EA0',
     borderRadius: 8,
   },
 });
